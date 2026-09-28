@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criptografia de Letras</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <main class="caixa">
+    <h1>Criptografia de Letras</h1>
+    <p>
+      Digite uma palavra. O programa trocará cada letra pela
+      próxima letra do alfabeto.
+    </p>
+    <p class="exemplo">
+      Exemplo: <strong>casa</strong> será transformada em       <strong>dbtb</strong>.
+    </p>
+    <label for="palavra">
+      Digite uma palavra:
+    </label>
+    <input type="text" id="palavra" placeholder="Exemplo: casa" maxlength="30">
+
+
+    <button id="botao-criptografar">
+      Criptografar
+    </button>
+    <button id="botao-limpar" class="botao-secundario">
+      Limpar
+    </button>
+    <p id="mensagem" class="mensagem"></p>
+    <section class="resultado">
+      <h2>Resultado</h2>
+      <p id="palavra-criptografada">
+        Aguardando uma palavra...
+      </p>
+    </section>
+    <section class="explicacao">
+      <h2>Transformação das letras</h2>
+      <ul id="lista-transformacoes">
+        <li>As transformações aparecerão aqui.</li>
+      </ul>
+    </section>
+    <p class="observacao">
+      Este exemplo é apenas educativo e não protege senhas reais.
+    </p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+
 

@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 30px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #eef3f8;
+  color: #263445;
+}
+.caixa {
+  max-width: 650px;
+  margin: auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+h1, h2 {
+  color: #174b75;
+}
+h1 {
+  margin-top: 0;
+  text-align: center;
+}
+h2 {
+  font-size: 20px;
+}
+.exemplo {
+  padding: 12px;
+  background-color: #fff5c2;
+  border-left: 5px solid #f2bf18;
+}
+label {
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 2px solid #b8c5d1;
+  border-radius: 6px;
+  font-size: 17px;
+}
+input:focus {
+  outline: 3px solid #b9dcf7;
+  border-color: #174b75;
+}
+button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: #174b75;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0e3859;
+}
+.botao-secundario {
+  background-color: #687686;
+}
+.botao-secundario:hover {
+  background-color: #4d5966;
+}
+.mensagem {
+  min-height: 24px;
+  color: #b42318;
+  font-weight: bold;
+}
+.resultado,
+.explicacao {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 7px;
+  background-color: #e8f3ff;
+}
+#palavra-criptografada {
+  font-size: 25px;
+  font-weight: bold;
+  color: #174b75;
+  word-break: break-word;
+}
+.explicacao {
+  background-color: #f6f7f9;
+}
+.explicacao li {
+  margin-bottom: 6px;
+}
+.observacao {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #606b78;
+}
+@media (max-width: 500px) {
+  body {
+    padding: 15px 10px;
+  }
+  .caixa {
+    padding: 20px;
+  }
+  button {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
