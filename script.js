@@ -1,43 +1,69 @@
-// Letras que o programa aceita, na ordem do alfabeto.
-const alfabeto = "abcdefghijklmnopqrstuvwxyz";
-// Busca os elementos da página pelo identificador (id).
+// Alfabeto base para deslocamento (+3)
+const alfabetoMinusculo = "abcdefghijklmnopqrstuvwxyz";
+const alfabetoMaiusculo = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// Busca os elementos da página pelo ID
 const campo = document.getElementById("palavra");
 const resultado = document.getElementById("palavra-criptografada");
 const lista = document.getElementById("lista-transformacoes");
 const mensagem = document.getElementById("mensagem");
+
 function criptografar() {
-  // Remove espaços nas pontas e transforma maiúsculas em minúsculas.
-  const palavra = campo.value.trim().toLowerCase();
-  let novaPalavra = "";
+  const textoOriginal = campo.value.trim();
   mensagem.textContent = "";
   lista.replaceChildren();
-  if (palavra === "" || !/^[a-z]+$/.test(palavra)) {
-    mensagem.textContent = "Digite apenas letras de a a z, sem acentos ou espaços.";
-    resultado.textContent = "Aguardando uma palavra...";
-    return; // Encerra a função quando a entrada não é válida.
+
+  if (textoOriginal === "") {
+    mensagem.textContent = "Digite um texto para criptografar.";
+    resultado.textContent = "Aguardando um texto...";
+    return;
   }
-  // Percorre uma letra por vez.
-  for (const letra of palavra) {
-    const posicao = alfabeto.indexOf(letra);
-    const proxima = alfabeto[(posicao + 1) % alfabeto.length]; // z volta para a.
-    novaPalavra += proxima;
-    // Mostra ao aluno como cada letra foi transformada.
-    const item = document.createElement("li");
-    item.textContent = `${letra} → ${proxima}`;
-    lista.appendChild(item);
+
+  // ETAPA 1: Avanço de 3 posições no alfabeto
+  let textoEtapa1 = "";
+  for (const char of textoOriginal) {
+    if (alfabetoMinusculo.includes(char)) {
+      const idx = alfabetoMinusculo.indexOf(char);
+      textoEtapa1 += alfabetoMinusculo[(idx + 3) % 26];
+    } else if (alfabetoMaiusculo.includes(char)) {
+      const idx = alfabetoMaiusculo.indexOf(char);
+      textoEtapa1 += alfabetoMaiusculo[(idx + 3) % 26];
+    } else {
+      // Mantém acentos, números e espaços
+      textoEtapa1 += char;
+    }
   }
-  resultado.textContent = novaPalavra;
+
+  // ETAPA 2: Inversão de cada palavra
+  const palavras = textoEtapa1.split(" ");
+  const palavrasInvertidas = palavras.map(palavra => palavra.split("").reverse().join(""));
+  const resultadoFinal = palavrasInvertidas.join(" ");
+
+  // Exibe o passo a passo na tela
+  const item1 = document.createElement("li");
+  item1.innerHTML = `<strong>Passo 1 (Avanço +3):</strong> ${textoEtapa1}`;
+  lista.appendChild(item1);
+
+  const item2 = document.createElement("li");
+  item2.innerHTML = `<strong>Passo 2 (Inversão B-ROZA):</strong> ${resultadoFinal}`;
+  lista.appendChild(item2);
+
+  // Exibe o resultado final
+  resultado.textContent = resultadoFinal;
 }
+
 function limpar() {
   campo.value = "";
   mensagem.textContent = "";
-  resultado.textContent = "Aguardando uma palavra...";
+  resultado.textContent = "Aguardando um texto...";
   lista.replaceChildren();
+  
   const item = document.createElement("li");
-  item.textContent = "As transformações aparecerão aqui.";
+  item.textContent = "As etapas do processo aparecerão aqui.";
   lista.appendChild(item);
   campo.focus();
 }
-// Executa as funções quando os botões são clicados.
+
+// Eventos de clique nos botões
 document.getElementById("botao-criptografar").addEventListener("click", criptografar);
 document.getElementById("botao-limpar").addEventListener("click", limpar);
